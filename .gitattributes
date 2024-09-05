@@ -1,2 +1,604 @@
-# Auto detect text files and perform LF normalization
-* text=auto
+// CODIGO DO ARQUIVO HOME.PHP
+
+<!DOCTYPE html>
+
+
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edger">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tela home</title>
+    <style>
+        BODY{
+        font-family:Arial, Helvetica, sans-serif;
+        background :linear-gradient(to right, rgb(5, 87, 239), rgb(211, 163, 67));
+        text-align:center;
+        color:aliceblue;
+        }
+        box{
+            position: absolute;
+            top:50%;
+            left:50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 30px;
+            border-radius: 10px;
+        }
+        a{
+            text-decoration: none;
+            color:aliceblue;
+            border: 3px solid yellow;
+            border-radius: 10px;
+            padding: 10px;
+        }
+        a:hover{
+            background-color: blue;
+        }
+    </style>    
+</head>
+<body>
+    <h1> PROJETO DE UMA APLICAÇÃO WEB</h1>
+
+     //__--#--__//FIM DO CÓDIGO
+
+     //CODIGO DO ARQUIVO CONFIG.PHP
+
+
+     <?php
+
+$dbHost='Localhost';
+$dbUsername='root';
+$dbPassword='';
+$dbName='projetop';
+
+$conexao =new mysqli($dbHost, $dbUsername, $dbPassword, $dbName);
+
+if($conexao->connect_errno)
+{
+   echo"ERRO";
+}
+else
+{
+    echo"conexao efetuada com sucesso";
+}
+ //o código da linha 10  á  linha 17 é somente para teste de conexão com o banco de dados?
+
+
+
+ // FIM DO CÓDIGO
+
+ CÓDIGO DO ARQUIVO LOGIN.PHP
+
+
+ <!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>sistema de acesso</title>
+	
+	<link rel="stylesheet" href="login.css">
+
+</head>
+
+
+<body>
+
+<a href="home.php">Voltar</a>
+
+
+<div>
+	<h1><b>Login</b></h1>
+	<form action="testeLogin.php" method="POST">
+
+
+		<input type="Email" name="Email" placeholder="Email">
+		<br><br>
+		<input type="password" name="Senha" placeholder="Senha">
+		<br><br>
+		<input class="inputSubmit" type="Submit" name="submit" value="Enviar">
+
+
+	</form>
+</div>
+
+</body>
+
+</html>
+
+//FIM DO CÓDIGO.
+
+CÓDIGO DO ARQUIVO LOGIN.CSS
+
+
+body {
+    font-family: Arial, Helvetica, sans-serif , white;
+    background: linear-gradient(to right,  rgb(20, 30, 80), rgb(30, 444,1355));
+   
+
+}
+
+
+div{
+    background-color:rgba(56, 125, 237, 0.718);
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    padding:80px;
+    border-radius:15px;
+    color:white;
+}
+input{
+    padding:15px;
+    border:none;
+    outline:none;
+    font-size:20px;
+}
+.inputSubmit{
+    background-color:rgba(235, 220, 9, 0.897);
+    border:10px;
+    padding:15px;
+    width:100%;
+    border-radius:10px;
+    color:white;
+    font-size:15px;
+    cursor: pointer;
+
+}
+.inputSubmit:hover{
+    background-color:rgb(182, 131, 10);
+    cursor: pointer;
+}
+ 
+
+ //FIM DO CÓDIGO.
+
+ //CÓDIGO DO ARQUIVO PROJETOP.PHP
+
+ <?PHP
+//projeto.php
+if(isset($_POST['submit']))
+{
+    // print_r('Nome: ' . $_POST('nome'));
+    //print_r('<br>');
+    //print_r('Email: ' . $_POST['email']);
+    //print_r('Telefone: ' . $_POST['telefone']);
+    // print_r('sexo: ' . $_POST['sexo']);
+    // print_r('data_nascimento: ' . $_POST['data_nascimento']);
+    //print_r('cidade: ' . $_POST['cidade']);
+    //print_r('estado: ' . $_POST['estado']);
+    //print_r('endereco: ' . $_POST['endereco']);
+
+   include_once('config.php');
+
+   $nome=$_POST['nome'];
+   $email=$_POST['email'];
+   $senha=$_POST['senha'];
+   $telefone=$_POST['telefone'];
+   $sexo=$_POST['sexo'];
+   $data_nascimento=$_POST['data_nascimento'];
+   $cidade=$_POST['cidade'];
+   $estado=$_POST['estado'];
+   $endereco=$_POST['endereco'];
+
+   $result= mysqli_query($conexao,"INSERT INTO cadastros(nome,email,senha,telefone,sexo,data_nascimento,cidade,estado,endereco)
+   VALUES('$nome','$email','$senha','$telefone','$sexo','$data_nascimento','$cidade','$estado','$endereco')");
+
+   header('Location: login.php');
+
+}
+
+?>
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        --projeto5°período--
+    </title>
+
+
+<link rel="stylesheet" href="projetop.css">
+</head>
+<body>
+
+      <a href="login.php">Voltar</a>
+    
+    <div class="box">
+         <form action="projetop.php" method="POST">
+            
+            <fieldset>
+
+                <legend><b><h4>FORMUlÁRIO DE CADASTRO</h4></b></legend>
+                <br>
+                <div class="inputBox">
+                    <input type="text" name="nome" id="nome" class="inputUser" required>
+                    <label for="nome" class="labelInput"><b>Nome completo</b></label>
+                </div>
+                <br>
+                <div class="inputBox">
+                    <input type="text" name="email" id="email" class="inputUser" required>
+                    <label for="email" class="labelInput"><b>Email</b></label>
+                </div>
+                <br>
+                <div class="inputBox">
+                    <input type="password" name="senha" id="senha" class="inputUser" required>
+                    <label for="senha" class="labelInput"><b>Senha</b></label>
+                </div>
+                <br>
+                <div class="inputBox">
+                    <input type="telefone" name="telefone" id="telefone" class="inputUser" required>
+                    <label for="telefone" class="labelInput"><b>telefone</b></label>
+                </div>
+                
+
+                <p><b><h4>Sexo:</h4></b></p>
+                <input type="radio" id="feminino" name="sexo" value="feminino" required>
+                <label for="feminino"class="labelInput2"><b>Feminino</b></label>
+                
+                <input type="radio" id="masculino" name="sexo" value="masculino" required>
+                <label for="masculino"class="labelInput2"><b>Masculino</b></label>
+                
+                <input type="radio" id="outro" name="sexo" value="outro" required>
+                <label for="outro"class="labelInput2"><b>Outro</b></label>
+                
+                
+                    <label for="data_nascimento"><b><h4>Data de nascimento:</h4></b></label>
+                    <input type="date" name="data_nascimento"class="labelInput3" id="data_nascimento"required>
+                
+                    <br><br>
+                <div class="inputBox">
+                    <input type="text" name="cidade" id="cidade" class="inputUser" required>
+                    <label for="cidade" class="labelInput"><b>Cidade</b></label>
+                    </div>
+                    <br>
+
+                <div class="inputBox">
+                    <input type="text" name="estado" id="estado" class="inputUser" required>
+                    <label for="estado" class="labelInput"><b>Estado</b></label>
+                    </div>
+                    <br>
+
+                <div class="inputBox">
+                    <input type="text" name="endereco" id="endereco" class="inputUser" required>
+                    <label for="endereco" class="labelInput"><b>Endereço</b></label>
+                    </div>
+                    <br>
+                    <input type="submit" name="submit" id="submit">
+          </fieldset>
+        
+    </div>
+   
+    
+
+
+   
+</body>
+</html>
+
+//FIM DO CÓDIGO
+
+//CÓDIGO DO ARQUIVO PROJETOP.CSS
+
+body {
+    font-family:Arial, Helvetica, sans-serif;
+    background-image: linear-gradient( to right,  rgb(20, 50, 221), rgb(247, 111, 14));
+}
+h4{
+    color: rgb(241, 245, 116);
+}
+
+
+.box {
+    height:95% ;
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    background-color:rgba(234, 242, 243, 0.2);
+    padding: 10px;
+    border-radius: 15px;
+    width: 40%;
+
+}
+
+
+fieldset {
+   
+    border: 4px solid yellow;
+    border-radius: 10px;
+    padding: 10px;
+   
+}
+legend{
+    height:20% ;
+    border: 2px solid rgb(247, 211, 9);
+    padding: 0.5px;
+    padding-left: 10PX;
+    padding-right: 10PX;
+    text-align:center;
+    background-color: rgb(175, 170, 141);
+    border-radius: 8px;
+    
+
+}
+.inputBox{
+    position: relative;
+    
+}
+.inputUser{
+    background: none;
+    border: none;
+    border-bottom: 1px solid white;
+    outline: none;
+    color: aliceblue;
+    font-size: 15px;
+    width: 100%;
+    letter-spacing: 2px;
+}
+.labelInput3{
+    color:rgb(184, 160, 130) ;
+}
+.labelInput2{
+    color:rgb(247, 206, 153) ;
+}
+.labelInput{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    color: rgb(247, 206, 153);
+    pointer-events: none;
+    transition: 0.5s;
+}
+.inputUser:focus~.labelInput,
+.inputUser:valid~.labelInput{
+    top: -15px;
+    font-size: 10px;
+    color: rgb(212, 212, 226);
+   /* foerced-color-adjust: beige;*/
+}
+#data_nascimento{
+    border: none;
+    padding: 8px;
+    border-radius: 10px;
+    outline: none;
+    font-size: 15px;
+}
+#submit{
+    background-image: linear-gradient(to right,rgb(red,blue,gold),rgb(green,orange,silver));
+    width: 100%;
+    border: none;
+    padding: 3px;
+    color: #f37b0a;
+    font-size: 25px;
+    border-radius: 15px;
+    cursor: pointer;
+}
+#submit:hover{
+    background-color:rgb(211, 191, 13);
+
+}
+a:any-link{
+    text-decoration: none;
+}
+
+//FIM DO CÓDIGO
+
+//CÓDIGO DO ARQUIVO SISTEMA .PHP 
+//OBS O CSS DESSE ARQUIVO TÁ DENTRO DO PRÓPRIO CÓDIGO
+
+
+<?php
+ session_start();
+  print_r($_SESSION);
+  if((!isset($_SESSION['email'])==true) && (!isset($_SESSION['senha'])==true))
+  {
+    unset($_SESSION['email']);
+    unset($_SESSION['senha']);
+	header('$_Location: sistema.php');
+
+  } 
+  else{
+
+      $logar = $_SESSION[ 'email' ];
+     
+     }
+  
+ 
+ ?>
+
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>SISTEMA</title>
+
+	<style>
+	BODY {
+		font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+		background-image: linear-gradient(to right, rgb(20, 30, 80), rgb(30, 444, 1355));
+		color: pink;
+	}
+
+	h6 {
+		color: white;
+	}
+
+	alert {
+		font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+		color: yellowellow;
+	}
+	</style>
+
+	<script type="text/javascript">
+	const calculaImc =()=> {
+		const altura = document.imcForm.element;
+		const peso = document.imcForm.element;
+
+		const imc = peso/(altura*altura);
+
+		if (imc < 18.5){
+			alert("voce está abaixo do peso");
+		} else if (imc > 18.5 && imc < 25) {
+			alert("você está com peso normal");
+		} else if (imc > 25 && imc < 30) {
+			alert("você está com sobre peso");
+		} else if (imc > 40) {
+			alert("você está com obesidade");
+		} else if (imc > 18.5 && imc < 25) {
+			alert("você está com obesidade grave");
+		} else {
+			alert("insira as informações");
+		}
+
+
+	}
+	</script>
+
+
+</head>
+
+<body>
+
+	<h1>acesso ao sistema </h1>
+
+	<!--
+	
+	<div class="gyll">
+
+		<h6>ginástica</h6>
+		<a href="">
+			<h6>nutição</h6>
+		</a>
+		<img src="">imagem</img>
+
+	</div>
+	<br>
+
+	<div class="gyll1">
+
+		<h6>musculação</h6>
+		<a href="">
+			<h6>wheyprothey</h6>
+		</a>
+		<img src="">imagem</img>
+
+	</div>
+	<br>
+
+	<div class="gyll1">
+
+		<h6>alimentação</h6>
+		<a href="">
+			<h6>vitaminas</h6>
+		</a>
+		<img src="">imagem</img>
+
+	</div>
+	<br>
+
+-->
+	<h1>CÁLCULO DE IMC</h1>
+
+	<fieldset>
+
+		<div class="BOX">
+			<form>
+				<form id="imcForm" name="imcForm">
+					<div class="inputBox">
+						<input type="bolean" id="altura" name="altura">
+						<label for="altura">INSIRA A ALTURA</label>
+					</div>
+					<br>
+
+					<div class="inputBox">
+						<input type="bolean" id="peso" name="peso">
+						<label for="peso">INSIRA O PESO</label>
+					</div>
+					<br>
+
+					<div class="inputBox">
+						<input type="submit" value="calcular" onclick="SubmitEvent">
+
+					</div>
+					<br>
+
+				</form>
+			</form>
+		</div>
+
+
+	</fieldset>
+
+
+</body>
+
+</html>
+
+//FIM DO CÓDIGO
+
+
+//ARQUIVO TESTELOGIN.PHP   O DA VALIDAÇÃO NA HORA DE LOGAR NO SISTEMA
+//TEM QUE MODIFICAR POIDS AINDA NÃO ESTA LOGANDO NO SISTEMA
+
+
+<?php
+  //teste login.php 
+//print_r($_REQUEST);
+
+session_start();
+
+
+if(isset($_POST['submit'])
+  && !empty($POST['email'])
+  && !empty($_POST['senha']))
+{
+   //ACESSO
+
+   include_once('config.php');
+   $email=$_POST['email'];
+   $senha=$_POST['senha'];
+
+   // print_r('email: '. $email);
+   // print_r('<br>');
+   // print_r('senha: '. $senha);
+   
+    $sql="SELECT * FROM projetop.cadastros; WHERE email= '$email' and senha= '$senha'";
+
+    $result= $conexao->query($sql);
+ 
+   // print_r($sql);
+   // print_r($result);
+
+   if(mysqli_num_rows($result) <1 )
+   {
+     //print_r('não existe');
+       unset($_SESSION['email']);
+       unset($_SESSION['senha']);
+       header('$_Location:login.php');
+   }
+   else
+   {
+     //print_r('existe');
+       $_SESSION['email']=$email;
+       $_SESSION['senha']=$senha;
+       header('Location: sistema.php');
+   }
+
+  }
+
+
+else {
+  
+
+   header('Location:login.php');
+}
