@@ -1,14 +1,18 @@
-// CODIGO DO ARQUIVO HOME.PHP
+//projeto ok ate o acesso ao sistema
+
+//primeioarquivo
+
+//home.php
 
 <!DOCTYPE html>
-
-
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edger">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>tela home</title>
+    
+
     <style>
         BODY{
         font-family:Arial, Helvetica, sans-serif;
@@ -36,131 +40,43 @@
             background-color: blue;
         }
     </style>    
+
+
 </head>
 <body>
+
     <h1> PROJETO DE UMA APLICAÇÃO WEB</h1>
+    <h2>ALUNOS:</h2>
+    <h3>GILVAN</h3>
+    <h3>GABRIEL</h3>
+    <h3>NTHALIA</h3>
+    <h3>FELIPE</h3>
+    <h3>YASMIN TÁFNES</h3>
+    <h2>TUTOR:</h2>
+    <h3>DANIEL</h3>
+    <BR><BR><BR><BR><BR><BR>
+    
+    <div class="box">
+       
 
-     //__--#--__//FIM DO CÓDIGO
+        <a href="login.php">LOGIN</a>
+        <a href="projetop.php">CADASTRE-SE</a>
 
-     //CODIGO DO ARQUIVO CONFIG.PHP
-
-
-     <?php
-
-$dbHost='Localhost';
-$dbUsername='root';
-$dbPassword='';
-$dbName='projetop';
-
-$conexao =new mysqli($dbHost, $dbUsername, $dbPassword, $dbName);
-
-if($conexao->connect_errno)
-{
-   echo"ERRO";
-}
-else
-{
-    echo"conexao efetuada com sucesso";
-}
- //o código da linha 10  á  linha 17 é somente para teste de conexão com o banco de dados?
-
-
-
- // FIM DO CÓDIGO
-
- CÓDIGO DO ARQUIVO LOGIN.PHP
-
-
- <!DOCTYPE html>
-<html lang="pt-br">
-
-<head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>sistema de acesso</title>
-	
-	<link rel="stylesheet" href="login.css">
-
-</head>
-
-
-<body>
-
-<a href="home.php">Voltar</a>
-
-
-<div>
-	<h1><b>Login</b></h1>
-	<form action="testeLogin.php" method="POST">
-
-
-		<input type="Email" name="Email" placeholder="Email">
-		<br><br>
-		<input type="password" name="Senha" placeholder="Senha">
-		<br><br>
-		<input class="inputSubmit" type="Submit" name="submit" value="Enviar">
-
-
-	</form>
-</div>
+          
+    </div>  
 
 </body>
-
 </html>
 
-//FIM DO CÓDIGO.
+//segundo arquivo
 
-CÓDIGO DO ARQUIVO LOGIN.CSS
-
-
-body {
-    font-family: Arial, Helvetica, sans-serif , white;
-    background: linear-gradient(to right,  rgb(20, 30, 80), rgb(30, 444,1355));
-   
-
-}
+//projetop.php
 
 
-div{
-    background-color:rgba(56, 125, 237, 0.718);
-    position:absolute;
-    top:50%;
-    left:50%;
-    transform:translate(-50%,-50%);
-    padding:80px;
-    border-radius:15px;
-    color:white;
-}
-input{
-    padding:15px;
-    border:none;
-    outline:none;
-    font-size:20px;
-}
-.inputSubmit{
-    background-color:rgba(235, 220, 9, 0.897);
-    border:10px;
-    padding:15px;
-    width:100%;
-    border-radius:10px;
-    color:white;
-    font-size:15px;
-    cursor: pointer;
-
-}
-.inputSubmit:hover{
-    background-color:rgb(182, 131, 10);
-    cursor: pointer;
-}
- 
-
- //FIM DO CÓDIGO.
-
- //CÓDIGO DO ARQUIVO PROJETOP.PHP
-
- <?PHP
+<?PHP
 //projeto.php
+
+
 if(isset($_POST['submit']))
 {
     // print_r('Nome: ' . $_POST('nome'));
@@ -173,11 +89,11 @@ if(isset($_POST['submit']))
     //print_r('estado: ' . $_POST['estado']);
     //print_r('endereco: ' . $_POST['endereco']);
 
-   include_once('config.php');
+   include_once 'config.php';
 
    $nome=$_POST['nome'];
-   $email=$_POST['email'];
    $senha=$_POST['senha'];
+   $email=$_POST['email'];
    $telefone=$_POST['telefone'];
    $sexo=$_POST['sexo'];
    $data_nascimento=$_POST['data_nascimento'];
@@ -185,8 +101,8 @@ if(isset($_POST['submit']))
    $estado=$_POST['estado'];
    $endereco=$_POST['endereco'];
 
-   $result= mysqli_query($conexao,"INSERT INTO cadastros(nome,email,senha,telefone,sexo,data_nascimento,cidade,estado,endereco)
-   VALUES('$nome','$email','$senha','$telefone','$sexo','$data_nascimento','$cidade','$estado','$endereco')");
+   $result= mysqli_query($conexao,"INSERT INTO cadastros(nome,senha,email,telefone,sexo,data_nascimento,cidade,estado,endereco)
+   VALUES('$nome','$senha','$email','$telefone','$sexo','$data_nascimento','$cidade','$estado','$endereco')");
 
    header('Location: login.php');
 
@@ -209,7 +125,7 @@ if(isset($_POST['submit']))
 </head>
 <body>
 
-      <a href="login.php">Voltar</a>
+      <a href="home.php">Voltar</a>
     
     <div class="box">
          <form action="projetop.php" method="POST">
@@ -224,13 +140,13 @@ if(isset($_POST['submit']))
                 </div>
                 <br>
                 <div class="inputBox">
-                    <input type="text" name="email" id="email" class="inputUser" required>
-                    <label for="email" class="labelInput"><b>Email</b></label>
+                    <input type="Password" name="senha" id="senha" class="inputUser" required>
+                    <label for="senha" class="labelInput"><b>Senha</b></label>
                 </div>
                 <br>
                 <div class="inputBox">
-                    <input type="password" name="senha" id="senha" class="inputUser" required>
-                    <label for="senha" class="labelInput"><b>Senha</b></label>
+                    <input type="text" name="email" id="email" class="inputUser" required>
+                    <label for="email" class="labelInput"><b>Email</b></label>
                 </div>
                 <br>
                 <div class="inputBox">
@@ -283,16 +199,57 @@ if(isset($_POST['submit']))
 </body>
 </html>
 
-//FIM DO CÓDIGO
+//terceiro arquivo
 
-//CÓDIGO DO ARQUIVO PROJETOP.CSS
+//login.php
+
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>sistema de login</title>
+	
+	<link rel="stylesheet" href="login.css">
+
+</head>
+
+
+<body>
+
+<a href="home.php">Voltar</a>
+
+
+<div>
+
+	<h1><b>Login</b></h1>
+	<form action="testeLogin.php" method="POST">
+
+
+		<input type="email" name="email" placeholder="Email">
+		<br><br>
+		<input type="Password" name="senha" placeholder="Senha">
+		<br><br>
+		<input class="inputSubmit" type="submit" name="submit" value="Enviar">
+
+
+	</form>
+</div>
+
+</body>
+
+//4 arquivo
+
+//projetop.css
 
 body {
     font-family:Arial, Helvetica, sans-serif;
-    background-image: linear-gradient( to right,  rgb(20, 50, 221), rgb(247, 111, 14));
+    background-image: linear-gradient( to right,  rgb(20, 50, 221), rgb(227, 237, 243));
 }
 h4{
-    color: rgb(241, 245, 116);
+    color: rgb(154, 155, 125);
 }
 
 
@@ -312,19 +269,19 @@ h4{
 
 fieldset {
    
-    border: 4px solid yellow;
+    border: 4px solid rgb(239, 244, 245);
     border-radius: 10px;
     padding: 10px;
    
 }
 legend{
     height:20% ;
-    border: 2px solid rgb(247, 211, 9);
+    border: 2px solid rgb(97, 169, 241);
     padding: 0.5px;
     padding-left: 10PX;
     padding-right: 10PX;
     text-align:center;
-    background-color: rgb(175, 170, 141);
+    background-color: rgb(235, 228, 191);
     border-radius: 8px;
     
 
@@ -389,33 +346,154 @@ a:any-link{
     text-decoration: none;
 }
 
-//FIM DO CÓDIGO
+//5arquivo
 
-//CÓDIGO DO ARQUIVO SISTEMA .PHP 
-//OBS O CSS DESSE ARQUIVO TÁ DENTRO DO PRÓPRIO CÓDIGO
+//login.css
 
+body {
+    font-family: Arial, Helvetica, sans-serif , white;
+    background: linear-gradient(to right,  rgb(20, 30, 80), rgb(30, 444,1355));
+   
+
+}
+
+
+div{
+    background-color:rgba(56, 125, 237, 0.718);
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    padding:80px;
+    border-radius:15px;
+    color:white;
+}
+input{
+    padding:15px;
+    border:none;
+    outline:none;
+    font-size:20px;
+}
+.inputSubmit{
+    background-color:rgba(235, 220, 9, 0.897);
+    border:10px;
+    padding:15px;
+    width:100%;
+    border-radius:10px;
+    color:white;
+    font-size:15px;
+    cursor: pointer;
+
+}
+.inputSubmit:hover{
+    background-color:rgb(182, 131, 10);
+    cursor: pointer;
+}
+
+a:any-link{
+    text-decoration: none;
+}
+
+//6 arquivo
+
+//config.php   
+//esse arquivo é de conexão com o banco de dados
+
+<?php
+
+ $dbHost='Localhost';
+ $dbUsername='root';
+ $dbPassword='';
+ $dbName='projetop';
+
+ $conexao = new mysqli($dbHost, $dbUsername, $dbPassword, $dbName);
+
+ //if($conexao->connect_errno)
+ //{
+ //  echo"ERRO";
+ //}
+ //else
+ //{
+  //  echo"conexao efetuada com sucesso";
+ //}
+ //o código da linha 10  á  linha 17 é somente para teste de conexão com o banco de dados?
+
+////6 arquivo
+
+//testeLogin.php
+//esse arquivo irá fazer a interação e validação com as páginas
+
+<?php
+  //teste login.php 
+//print_r($_REQUEST);
+
+session_start();
+
+
+if(isset($_POST['submit']) && !empty($_POST['email']) && !empty($_POST['senha']))
+{
+   //ACESSO
+
+   include_once 'config.php';
+   $email=$_POST['email'];
+   $senha=$_POST['senha'];
+
+   // print_r('email: '. $email);
+   // print_r('<br>');
+   // print_r('senha: '. $senha);
+   
+    $sql="SELECT * FROM cadastros WHERE email= '$email' and senha= '$senha'";
+
+    $result= $conexao->query($sql);
+ 
+   // print_r($sql);
+   // print_r($result);
+
+   if(mysqli_num_rows($result) <1 )
+   {
+     //print_r('não existe');
+       unset($_SESSION['email']);
+       unset($_SESSION['senha']);
+       header('Location:login.php');
+   }
+   else
+   {
+     //print_r('existe');
+       $_SESSION['email']=$email;
+       $_SESSION['senha']=$senha;
+       //$logado = $_SESSION['email'] && $logado = $_SESSION['senha'];
+       header('Location:sistema.php');
+   }
+
+}
+else 
+    {
+      
+      header('Location:login.php');
+
+}
+
+//7arquivo
+
+//sistema.php
 
 <?php
  session_start();
-  print_r($_SESSION);
-  if((!isset($_SESSION['email'])==true) && (!isset($_SESSION['senha'])==true))
+  //print_r($_SESSION);
+  if((!isset($_SESSION['email'])== true) and (!isset($_SESSION['senha'])== true))
   {
     unset($_SESSION['email']);
-    unset($_SESSION['senha']);
-	header('$_Location: sistema.php');
+  	header('Location:login.php');
 
   } 
-  else{
-
-      $logar = $_SESSION[ 'email' ];
-     
-     }
+  else
+    $logado = $_SESSION['email'];
   
- 
+     
  ?>
 
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 
 <head>
 	<meta charset="UTF-8">
@@ -507,9 +585,20 @@ a:any-link{
 	<br>
 
 -->
+
+<fieldset>
+	<br>
+	<br>
+	
+    <fieldset>
 	<h1>CÁLCULO DE IMC</h1>
+	</fieldset>
+
+	<br>
+	<br>
 
 	<fieldset>
+		<br>
 
 		<div class="BOX">
 			<form>
@@ -539,66 +628,31 @@ a:any-link{
 
 	</fieldset>
 
+	<br>
+	<br>
+
+	</fieldset>
+
 
 </body>
 
 </html>
 
-//FIM DO CÓDIGO
+
+  obs o banco de dados segue a sequencia 
+id
+nome
+senha
+email
+telefone
+sexo
+data_nascimento
+cidade
+estado
+endereco
+
+usaei o phpmyadmin pra fazer o banco de dados
+tera que ajustar algumas coisas pra ficar mais ok
 
 
-//ARQUIVO TESTELOGIN.PHP   O DA VALIDAÇÃO NA HORA DE LOGAR NO SISTEMA
-//TEM QUE MODIFICAR POIDS AINDA NÃO ESTA LOGANDO NO SISTEMA
 
-
-<?php
-  //teste login.php 
-//print_r($_REQUEST);
-
-session_start();
-
-
-if(isset($_POST['submit'])
-  && !empty($POST['email'])
-  && !empty($_POST['senha']))
-{
-   //ACESSO
-
-   include_once('config.php');
-   $email=$_POST['email'];
-   $senha=$_POST['senha'];
-
-   // print_r('email: '. $email);
-   // print_r('<br>');
-   // print_r('senha: '. $senha);
-   
-    $sql="SELECT * FROM projetop.cadastros; WHERE email= '$email' and senha= '$senha'";
-
-    $result= $conexao->query($sql);
- 
-   // print_r($sql);
-   // print_r($result);
-
-   if(mysqli_num_rows($result) <1 )
-   {
-     //print_r('não existe');
-       unset($_SESSION['email']);
-       unset($_SESSION['senha']);
-       header('$_Location:login.php');
-   }
-   else
-   {
-     //print_r('existe');
-       $_SESSION['email']=$email;
-       $_SESSION['senha']=$senha;
-       header('Location: sistema.php');
-   }
-
-  }
-
-
-else {
-  
-
-   header('Location:login.php');
-}
